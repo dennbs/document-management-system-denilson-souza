@@ -48,19 +48,31 @@ export default function App() {
   }
 
   return (
-    <main style={styles.page}>
-      <div style={styles.content}>
-        <header style={styles.header}>
-          <p style={styles.eyebrow}>Arquivo local</p>
-          <h1 style={styles.title}>Document Management System</h1>
+    <main className="min-h-screen bg-slate-50 px-5 py-12">
+      <div className="mx-auto max-w-3xl">
+        <header className="mb-8 border-b-4 border-orange-400 pb-5">
+          <p className="m-0 font-mono text-sm font-bold uppercase tracking-wider text-emerald-700">
+            Arquivo local
+          </p>
+          <h1 className="mt-2 text-3xl font-bold text-slate-800 sm:text-4xl">
+            Document Management System
+          </h1>
         </header>
-        <section aria-labelledby="upload-title" style={styles.section}>
-          <h2 id="upload-title" style={styles.heading}>Enviar documento</h2>
+        <section aria-labelledby="upload-title" className="mb-8">
+          <h2 id="upload-title" className="mb-4 text-xl font-semibold text-slate-800">
+            Enviar documento
+          </h2>
           <UploadComponent onUpload={handleUpload} isSubmitting={isSubmitting} />
         </section>
-        {message && <p role="status" style={styles.message}>{message}</p>}
-        <section aria-labelledby="documents-title" style={styles.section}>
-          <h2 id="documents-title" style={styles.heading}>Documentos</h2>
+        {message && (
+          <p role="status" className="mb-8 border-l-4 border-emerald-700 bg-emerald-50 px-4 py-3 text-slate-800">
+            {message}
+          </p>
+        )}
+        <section aria-labelledby="documents-title" className="mb-8">
+          <h2 id="documents-title" className="mb-4 text-xl font-semibold text-slate-800">
+            Documentos
+          </h2>
           <DocumentList documents={documents} isLoading={isLoading} onDownload={handleDownload} />
         </section>
       </div>
@@ -68,13 +80,3 @@ export default function App() {
   );
 }
 
-const styles = {
-  page: { background: '#f4f2e8', color: '#18332d', fontFamily: 'Georgia, serif', minHeight: '100vh', padding: '48px 20px' },
-  content: { margin: '0 auto', maxWidth: '760px' },
-  header: { borderBottom: '4px solid #d7783e', marginBottom: '32px', paddingBottom: '20px' },
-  eyebrow: { color: '#0f6b5b', fontFamily: 'ui-monospace, monospace', fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.08em', margin: 0, textTransform: 'uppercase' },
-  title: { fontSize: '2.25rem', margin: '8px 0 0' },
-  section: { marginBottom: '32px' },
-  heading: { fontSize: '1.25rem', marginBottom: '16px' },
-  message: { background: '#e0eee8', borderLeft: '4px solid #0f6b5b', margin: '0 0 32px', padding: '12px 16px' },
-};

@@ -13,12 +13,13 @@ export default function DownloadButton({ document, onDownload }) {
   }
 
   return (
-    <button type="button" onClick={handleDownload} disabled={isDownloading} style={styles.button}>
+    <button
+      type="button"
+      onClick={handleDownload}
+      disabled={isDownloading}
+      className="whitespace-nowrap rounded border border-emerald-700 bg-white px-3 py-2 font-bold text-emerald-800 transition-colors hover:bg-emerald-50 disabled:cursor-not-allowed disabled:opacity-60"
+    >
       {isDownloading ? 'Baixando...' : 'Baixar'}
     </button>
   );
 }
-
-const styles = {
-  button: { background: '#fff', border: '1px solid #0f6b5b', borderRadius: '4px', color: '#075447', cursor: 'pointer', font: 'inherit', fontWeight: 700, padding: '8px 12px' },
-};

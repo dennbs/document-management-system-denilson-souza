@@ -18,8 +18,8 @@ export default function UploadComponent({ onUpload, isSubmitting }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={styles.form}>
-      <label style={styles.label}>
+    <form onSubmit={handleSubmit} className="grid gap-4 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+      <label className="grid gap-1.5 font-semibold text-slate-700">
         Arquivo
         <input
           name="file"
@@ -27,10 +27,10 @@ export default function UploadComponent({ onUpload, isSubmitting }) {
           required
           disabled={isSubmitting}
           onChange={(event) => setFile(event.target.files?.[0] || null)}
-          style={styles.input}
+          className="rounded border border-slate-300 p-2.5 file:mr-3 file:rounded file:border-0 file:bg-emerald-700 file:px-3 file:py-1.5 file:font-semibold file:text-white disabled:cursor-not-allowed disabled:opacity-60"
         />
       </label>
-      <label style={styles.label}>
+      <label className="grid gap-1.5 font-semibold text-slate-700">
         Proprietário
         <input
           name="owner"
@@ -39,19 +39,16 @@ export default function UploadComponent({ onUpload, isSubmitting }) {
           value={owner}
           disabled={isSubmitting}
           onChange={(event) => setOwner(event.target.value)}
-          style={styles.input}
+          className="rounded border border-slate-300 p-2.5 focus:border-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-200 disabled:cursor-not-allowed disabled:opacity-60"
         />
       </label>
-      <button type="submit" disabled={isSubmitting} style={styles.button}>
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="rounded bg-emerald-700 px-4 py-2.5 font-bold text-white transition-colors hover:bg-emerald-800 disabled:cursor-not-allowed disabled:opacity-60"
+      >
         {isSubmitting ? 'Enviando...' : 'Enviar documento'}
       </button>
     </form>
   );
 }
-
-const styles = {
-  form: { display: 'grid', gap: '16px' },
-  label: { display: 'grid', gap: '6px', fontWeight: 600 },
-  input: { border: '1px solid #b5b9ad', borderRadius: '4px', padding: '10px', font: 'inherit' },
-  button: { background: '#0f6b5b', border: 0, borderRadius: '4px', color: '#fff', cursor: 'pointer', font: 'inherit', fontWeight: 700, padding: '11px 16px' },
-};

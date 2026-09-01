@@ -10,20 +10,20 @@ function formatDate(date) {
 
 export default function DocumentList({ documents, isLoading, onDownload }) {
   if (isLoading) {
-    return <p>Carregando documentos...</p>;
+    return <p className="text-slate-500">Carregando documentos...</p>;
   }
 
   if (documents.length === 0) {
-    return <p>Nenhum documento enviado ainda.</p>;
+    return <p className="text-slate-500">Nenhum documento enviado ainda.</p>;
   }
 
   return (
-    <ul style={styles.list}>
+    <ul className="grid gap-2.5 divide-y divide-slate-200">
       {documents.map((document) => (
-        <li key={document.id} style={styles.item}>
+        <li key={document.id} className="flex flex-col gap-3 py-3.5 first:pt-0 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <strong>{document.originalName}</strong>
-            <div style={styles.metadata}>
+            <strong className="text-slate-800">{document.originalName}</strong>
+            <div className="mt-1 text-sm text-slate-500">
               {document.owner} · {formatSize(document.size)} · {formatDate(document.uploadedAt)}
             </div>
           </div>
@@ -33,9 +33,3 @@ export default function DocumentList({ documents, isLoading, onDownload }) {
     </ul>
   );
 }
-
-const styles = {
-  list: { display: 'grid', gap: '10px', listStyle: 'none', margin: 0, padding: 0 },
-  item: { alignItems: 'center', borderBottom: '1px solid #d8dacf', display: 'flex', gap: '16px', justifyContent: 'space-between', padding: '14px 0' },
-  metadata: { color: '#586158', fontSize: '0.9rem', marginTop: '5px' },
-};
